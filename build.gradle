@@ -52,6 +52,12 @@ dependencies {
 
 	runtimeOnly 'org.postgresql:postgresql'
 	runtimeOnly 'org.flywaydb:flyway-database-postgresql'
+
+	//jwt
+	implementation platform('io.jsonwebtoken:jjwt-bom:0.12.7')
+	implementation 'io.jsonwebtoken:jjwt-api'
+	runtimeOnly 'io.jsonwebtoken:jjwt-impl'
+	runtimeOnly 'io.jsonwebtoken:jjwt-jackson'
 }
 
 tasks.named('test') {
