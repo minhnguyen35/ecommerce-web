@@ -1,7 +1,18 @@
+buildscript {
+	repositories {
+		mavenCentral()
+	}
+	dependencies {
+		// This makes the PostgreSQL module visible to the flywayMigrate task
+		classpath "org.flywaydb:flyway-database-postgresql:10.11.0"
+	}
+}
+
 plugins {
 	id 'java'
 	id 'org.springframework.boot' version '3.5.14'
 	id 'io.spring.dependency-management' version '1.1.7'
+	id "org.flywaydb.flyway" version "10.11.0"
 }
 
 group = 'com.minhnguyen'
@@ -16,6 +27,13 @@ java {
 repositories {
 	mavenCentral()
 }
+
+flyway {
+	url = 'jdbc:postgresql://localhost:5432/ecommerce_db'
+	user = 'admin'
+	password = 'pwd'
+}
+
 
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
@@ -32,6 +50,7 @@ dependencies {
 	testAnnotationProcessor 'org.projectlombok:lombok'
 
 	runtimeOnly 'org.postgresql:postgresql'
+	runtimeOnly 'org.flywaydb:flyway-database-postgresql'
 }
 
 tasks.named('test') {
