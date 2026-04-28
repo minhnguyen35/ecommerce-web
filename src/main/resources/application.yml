@@ -1,8 +1,8 @@
 spring:
   datasource:
     url: jdbc:postgresql://localhost:5432/ecommerce_db
-    username: ${DB_USER}
-    password: ${DB_PASS}
+    username: admin
+    password: pwd
   jpa:
     hibernate:
       ddl-auto: validate
