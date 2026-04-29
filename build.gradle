@@ -63,3 +63,12 @@ dependencies {
 tasks.named('test') {
 	useJUnitPlatform()
 }
+
+bootRun {
+    if (file(".env").exists()) {
+        file(".env").readLines().each {
+            def (key, value) = it.tokenize('=')
+            if (key && value) environment key, value
+        }
+    }
+}
